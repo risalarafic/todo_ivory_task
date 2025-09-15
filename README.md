@@ -61,3 +61,4 @@ This project was created as part of a **Flutter Machine Test** to demonstrate ap
 ## 👨‍💻 Author
 ````   
 Risala KM
+LinkedIn linkedin.com/in/risala-km
