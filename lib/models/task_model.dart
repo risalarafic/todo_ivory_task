@@ -31,6 +31,15 @@ class Task extends Equatable {
     );
   }
 
+  factory Task.fromApiJson(Map<String, dynamic> json) {
+    return Task(
+      id: json['id'] as int,
+      title: json['todo'] ?? '',
+      description: '',
+      isDone: json['completed'] ?? false,
+    );
+  }
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'title': title,

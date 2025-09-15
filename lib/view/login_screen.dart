@@ -1,6 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../TaskBloc/task_bloc.dart';
+import '../TaskBloc/task_event.dart';
 import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,8 +18,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailCtrl = TextEditingController();
   final _passwrdCtrl = TextEditingController();
 
-  // final _Email = 'email@gmail.com';
-  // final _Password = '123456';
+  final _Email = 'ivory@gmail.com';
+  final _Password = '12345678';
 
   bool _isLoading = false;
   bool _obscure = true;
@@ -38,32 +40,63 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() {
           _isLoading=false;
         });
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const HomeScreen()),
-        );
+        if (_emailCtrl.text.trim() == _Email && _passwrdCtrl.text.trim() == _Password){
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => BlocProvider(
+                create: (_) => TaskBloc()..add(LoadTasks()),
+                child: const HomeScreen(),
+              ),
+            ),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Login Successfully'),
+              backgroundColor: Colors.green,
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
+        else{
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Invalid Credentials'),
+              backgroundColor: Color.fromARGB(255, 182, 9, 9),
+              duration: Duration(seconds: 2),
+            ),
+          );        }
       });
 
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Invalid credentials')));
-      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Invalid credentials')));
     }
-  
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
           backgroundColor: Colors.blue[400],
           title: Center(child: const Text('Login',style: TextStyle(color: Colors.white),))),
       body: Form(
-          key: _formKey,
-          child:  Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Center(
+        key: _formKey,
+        child:  Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Center(
+            child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // SizedBox(height: 100,),
+                  CircleAvatar(
+                    radius: 32,
+                    backgroundColor: Colors.white,
+                    child: const Image(
+                      image: AssetImage("assets/images/todo_icon.png"),
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child:TextFormField(
@@ -94,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         return null;
                       },
                     ),
-
+              
                   ),
                   const SizedBox(height: 12),
                   Padding(
@@ -128,7 +161,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  TextButton(
+                    onPressed: (){},
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.blue,
+                    ),
+                    child: const Text('Forgot password?'),
+                  ),
+                  const SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
@@ -138,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             backgroundColor: Colors.blue[400],
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12), // rounded corners
+                              borderRadius: BorderRadius.circular(12),
                             ),
                           ),
                           child: const Text('Login')),
@@ -147,7 +187,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-          ),),
+          ),
+        ),),
     );
   }
 }

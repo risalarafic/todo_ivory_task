@@ -9,6 +9,8 @@ abstract class TaskEvent extends Equatable {
 
 class LoadTasks extends TaskEvent {}
 
+class LoadTasksFromAPI extends TaskEvent {}
+
 class AddTask extends TaskEvent {
   final Task task;
   const AddTask(this.task);

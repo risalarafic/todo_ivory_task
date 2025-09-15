@@ -1,16 +1,63 @@
-# todo_ivory_task
+# 📝 Flutter To-Do App
 
-A new Flutter project.
+A simple **Flutter To-Do application** built with **BLoC state management** and **SQLite (sqflite)** for local storage.  
+This project was created as part of a **Flutter Machine Test** to demonstrate app architecture, state management, and persistent storage.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
+- **Splash Screen** → Shows app logo/name briefly.
+- **Login Screen** → Hardcoded email & password validation (`test@example.com / password123`).
+- **Home Screen (Dashboard)**
+    - Displays a list of tasks.
+    - Mark tasks as **Pending / Done** with a checkbox.
+    - Delete tasks by swipe or delete button.
+    - Tap task to edit.
+- **Add/Edit Task Screen**
+    - Create a new task (title + description).
+    - Update existing tasks.
+- **Fetched Todolist**
+    - Fetched to do list from dummyjson/todos.
+    - Using http package.
+- **Persistent Storage**
+    - Tasks are saved in **SQLite** (`sqflite` package).
+    - Status (Pending/Done) is preserved even after restart.
+- **State Management**
+    - Powered by **flutter_bloc** (`Bloc`, `Events`, `States`).
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠️ Tech Stack
+- **Flutter** (Dart)
+- **flutter_bloc** → State Management
+- **equatable** → Value equality in BLoC
+- **http** → Fetched todo list 
+- **sqflite** → SQLite database
+- **path** → To manage database path
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+
+## ▶️ How to Run
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/flutter_todo_app.git
+   cd flutter_todo_app
+2. Install dependencies:
+   ````
+   flutter pub get
+3. Run on emulator/device:
+   ````
+   flutter run 
+
+
+
+## 🔑 Login Credentials
+```
+    Email: ivory@gmail.com
+    Password: 12345678 
+```
+
+## 👨‍💻 Author
+````   
+Risala KM

@@ -10,10 +10,18 @@ abstract class TaskState extends Equatable {
 class TasksLoading extends TaskState {}
 
 class TasksLoaded extends TaskState {
-  final List<Task> tasks;
-  const TasksLoaded(this.tasks);
+  final List<Task> apiTasks;
+  final List<Task> localTasks;
+  final List<Task> allTasks;
+
+  const TasksLoaded({
+    required this.apiTasks,
+    required this.localTasks,
+    required this.allTasks,
+  });
+
   @override
-  List<Object?> get props => [tasks];
+  List<Object?> get props => [apiTasks, localTasks, allTasks];
 }
 
 class TasksError extends TaskState {
