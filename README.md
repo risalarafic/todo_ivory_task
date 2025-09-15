@@ -7,7 +7,7 @@ This project was created as part of a **Flutter Machine Test** to demonstrate ap
 
 ## 🚀 Features
 - **Splash Screen** → Shows app logo/name briefly.
-- **Login Screen** → Hardcoded email & password validation (`test@example.com / password123`).
+- **Login Screen** → Hardcoded email & password validation (`ivory@gmail.com / password123`).
 - **Home Screen (Dashboard)**
     - Displays a list of tasks.
     - Mark tasks as **Pending / Done** with a checkbox.
